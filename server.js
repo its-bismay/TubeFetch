@@ -3,6 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 
 import audioRouter from "./routes/route.audio.js"
+import videoRouter from "./routes/route.video.js";
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -11,7 +12,9 @@ app.use(express.json());
 app.use(cors());
 
 //routes
-app.use('/audio',audioRouter)
+app.use('/audio',audioRouter);
+
+app.use('/video',videoRouter);
 
 app.get("/download", async (req, res) => {
   const videoUrl = req.body.url; // Get the video URL from the query parameters
